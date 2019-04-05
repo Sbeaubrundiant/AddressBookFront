@@ -2,56 +2,32 @@
 <html>
 
 <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
+        
+        .navbar {
+            display: block;
+            padding: 25px;
+        }
         button {
-            background-color: #4CAF50;
-            border: solid 2px;
-            color: gold;
-            padding: 40px 40px;
+            background-color:#4393c4;
+    
+            padding: 25px 45px;
             text-align: center;
             text-decoration: none;
             display: block;
             margin: auto;
             font-size: 30px;
-            border-radius: 50%;
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #4CAF50;
+            background-color:#97da97;
             
-            color: red;
+            color:rgb(59, 132, 206);
         }
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #e6ffec;
-        }
 
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            color: #00ff40;
-        }
-
-        li a:hover {
-            background-color: #4CAF50;
-        }
-
-        .active {
-            background-color: #4CAF50;
-        }
 
     </style>
     <meta charset="ISO-8859-1">
@@ -60,11 +36,11 @@
 
 <body>
     <div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#Address">Address</a></li>
-                <li style="float:right"><a class="active" href="#Admin">Admin</a></li>
-            </ul>
+            <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+                    <a  class="nav-item active" href="HomePage.html">Home</a>
+                    <a  class="nav-item" href="AddressCreationPage.html">Address</a>
+                    <a  class="nav-item" href="AdminPage.html">Admin</a>
+                </nav>
 
     </div>
     <br>

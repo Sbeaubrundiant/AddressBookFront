@@ -3,44 +3,10 @@
 <head>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #e6ffec;
-        }
-
-        li {
-            float: left;
-        }
-
-        li a {
+        .navbar {
             display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            color: #00ff40;
+            padding: 25px;
         }
-
-        li a:hover {
-            background-color: #4CAF50;
-        }
-
-        .active {
-            background-color: #4CAF50;
-        }
-
-       .button
-        {   
-            display: flex; 
-            justify-content: center;
-            width: 150px;
-            text-align: center;
-            margin: auto;
-        }
-
         .form-group {
             display: block;
             margin-left: auto;
@@ -57,13 +23,12 @@
 </head>
 
 <body>
-<<<<<<< HEAD
   <div>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#Address">Address</a></li>
-        <li style="float:right"><a class="active" href="#Admin">Admin</a></li>
-    </ul>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a  class="nav-item active" href="HomePage.html">Home</a>
+        <a  class="nav-item" href="AddressCreationPage.html">Address</a>
+        <a  class="nav-item" href="AdminPage.html">Admin</a>
+    </nav>
   </div>
 
 <form>     
@@ -104,27 +69,5 @@
         </div>
 </form>
  
-=======
-<div>
-            <ul>
-            <li><a href="/HomePage.html">Home</a></li>
-            <li><a href="AddressCreationPage.html">Address</a></li>
-            <li style="float:right"><a class="active" href="AdminPage.html">Admin</a></li>
-        </ul>
-
-    </div>
-    <div>
-    <form >
-    
-    <div>
-        <label class="label_input" required="required">Name</label><br>
-        <input class="area_input" type="text" value="" id="Name"></input>
-      </div>
-    
-    
-    
-    </form>
-    </div>
->>>>>>> b06c8e92c53e19ae8b348e849204d12fccd21dfa
 </body>
 </html>
