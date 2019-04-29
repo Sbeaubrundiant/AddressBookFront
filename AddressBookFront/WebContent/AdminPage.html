@@ -26,6 +26,12 @@
             
             color:rgb(59, 132, 206);
         }
+        .adminTitle {
+            font-size: 70px;
+            color:cadetblue;
+            text-align: center;
+            text-transform: uppercase;
+           }
 
 
 
@@ -43,10 +49,22 @@
                 </nav>
 
     </div>
+    <div>
+        <h1 class="adminTitle">Admin</h1><br>
+      </div>
     <br>
     <br>
-    <button type="button">submit informations</button>
+    <button type="button" name="load_data" id="load_data" onclick="uploadData()">Load Data</button>
+<script>
+    postUrl = "http://localhost:8082/addressbook/cities/" 
 
+    function uploadData() {
+        xhr = new XMLHttpRequest();
+        xhr.open("POST", postUrl, true );
+        xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        xhr.send();
+    }
+</script>
 </body>
 
 </html>
