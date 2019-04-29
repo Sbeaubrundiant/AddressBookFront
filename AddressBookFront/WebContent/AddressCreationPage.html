@@ -31,7 +31,7 @@
     </nav>
   </div>
 
-<form>     
+<form enctype="multipart/form-data" method="post" name="fileform">     
         <div class="form-group col-md-4">
             <label for="inputRecipient">Recipient</label>
             <input type="text" class="form-control" id="inputRecipient" placeholder="Civility, Firstname, Lastname ">
@@ -39,11 +39,11 @@
             <label for="inputDelivery">Detail place of delivery</label>
             <input type="text" class="form-control" id="inputDelivery" placeholder="N ° apartment or Box letter - Floor - Corridor - Staircase">
             <br>
-            <label for="inputLocalisation">Additional location</label>
-            <input type="text" class="form-control" id="inputlocation" placeholder="Entry - Buliding - Residence...">
+            <label for="inputLocation">Additional location</label>
+            <input type="text" class="form-control" id="inputLocation" placeholder="Entry - Buliding - Residence...">
             <br>    
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="12 Rue Saint Louis Blanc">
+            <label for="inputRoad">Road</label>
+            <input type="text" class="form-control" id="inputRoad" placeholder="12 Rue Saint Louis Blanc">
             <br>
             <label for="inputWay">Complement location way</label>
             <input type="text" class="form-control" id="inputWay" placeholder="Remaining post - BP 1114 - Location ">
@@ -60,38 +60,41 @@
                 <label for="inputCity">City</label>
                 <select id="inputCity" class="form-control">
                   <option selected>Name City...</option>
-                  <option>...</option>
+                  <option></option>
                 </select>
         </div>
              <div class="form-group" >
-             <button methode="post" type="submit" id="button">Submit</button>
+             <button methode="post" type="submit" id="submit">Submit</button>
 
         </div>
 </form>
+
+<div id="output"></div>
  
 </body>
 </html>
 
 <script>
-    
-        var button = document.getElementById('create');
-    
-          button.onclick = () => { 
-    
-          let firstname = document.getElementById ('firstname').value;
-          let lastname = document.getElementById ('lastname').value;
-          let birthdate = document.getElementById ('birthdate').value;
-          let active = document.getElementsByClassName ('active').value;
-    
-          let data = { "firstname": firstname ,"lastname": lastname, "birthdate":birthdate, "active":active };
-          let json = JSON.stringify(data);
-    
-          let xhr = new XMLHttpRequest();
-          let url = "http://localhost:8080/students/api/users";
-    
-          xhr.open("POST", url, true);
-          xhr.setRequestHeader("Content-Type", "application/json");
-          xhr.send(json);
-          };
-        
-        </script>
+
+let submit = document.getElementById('submit');
+
+submit.onclick= () =>{
+
+let recipient = document.getElementById("inputRecipient").value;
+let delivery = document.getElementById("inputDelivery").value;
+let location = document.getElementById("inputLocation").value;
+let road = document.getElementById("inputRoad").value;
+let way = document.getElementById("inputWay").value;
+//let zipcodecity= document.getElementById("").value;
+
+let data ={"inputRecipient": identity,"inputDelivery": appartementInfo,"inputLocation": buildInfo,"inputRoad": road, "inputWay": delivery,  };
+let json = JSON.stringify(data);
+
+let xhr = new XMLHttpRequest ();
+let url = "http://localhost:8080/addressbook/addresses";
+
+xhr.open("POST", url, true);
+xhr.setRequestHeader("content-Type", "application/json");
+xhr.send(json);
+}
+</script>
