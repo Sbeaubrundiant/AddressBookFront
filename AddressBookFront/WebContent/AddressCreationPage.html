@@ -60,41 +60,14 @@
                 <label for="inputCity">City</label>
                 <select id="inputCity" class="form-control">
                   <option selected>Name City...</option>
-                  <option></option>
+                  <option>...</option>
                 </select>
         </div>
              <div class="form-group" >
-             <button methode="post" type="submit" id="submit">Submit</button>
+             <button methode="post" type="submit" class="button">Submit</button>
 
         </div>
 </form>
-
-<div id="output"></div>
  
 </body>
 </html>
-
-<script>
-
-let submit = document.getElementById('submit');
-
-submit.onclick= () =>{
-
-let recipient = document.getElementById("inputRecipient").value;
-let delivery = document.getElementById("inputDelivery").value;
-let location = document.getElementById("inputLocation").value;
-let road = document.getElementById("inputRoad").value;
-let way = document.getElementById("inputWay").value;
-//let zipcodecity= document.getElementById("").value;
-
-let data ={"inputRecipient": identity,"inputDelivery": appartementInfo,"inputLocation": buildInfo,"inputRoad": road, "inputWay": delivery,  };
-let json = JSON.stringify(data);
-
-let xhr = new XMLHttpRequest ();
-let url = "http://localhost:8080/addressbook/addresses";
-
-xhr.open("POST", url, true);
-xhr.setRequestHeader("content-Type", "application/json");
-xhr.send(json);
-}
-</script>
