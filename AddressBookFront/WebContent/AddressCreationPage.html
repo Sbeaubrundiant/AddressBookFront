@@ -29,13 +29,30 @@
 </head>
 
 <body>
-  <div>
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-        <a  class="nav-item active" href="HomePage.html">Home</a>
-        <a  class="nav-item" href="AddressCreationPage.html">Address</a>
-        <a  class="nav-item" href="AdminPage.html">Admin</a>
-    </nav>
-  </div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="#">AddressBook</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                  <a  class="nav-link" href="HomePage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a  class="nav-link active" href="AddressCreationPage.html">Address</a>
+                </li>
+                <li class="nav-item">
+                  <a  class="nav-link" href="Localities.html">Localities</a>
+                </li>
+                <li class="nav-item">
+                  <a  class="nav-link" href="AdminPage.html">Admin</a>
+                </li>
+              </ul>
+            </div>
+      </nav>
+      </div>
 
   <div>
     <h1 class="addressTitle">Address</h1><br>
@@ -43,20 +60,20 @@
 
 <form enctype="multipart/form-data" method="post" name="fileform">     
         <div class="form-group col-md-4">
-            <label for="inputRecipient">Recipient</label>
-            <input type="text" class="form-control" id="inputRecipient" placeholder="Civility, Firstname, Lastname ">
+            <label for="identity">Identity</label>
+            <input type="text" class="form-control" id="identity" placeholder="Civility, Firstname, Lastname ">
             <br>
-            <label for="inputDelivery">Detail place of delivery</label>
-            <input type="text" class="form-control" id="inputDelivery" placeholder="N ° apartment or Box letter - Floor - Corridor - Staircase">
+            <label for="appartementInfo">Appartement Info</label>
+            <input type="text" class="form-control" id="appartementInfo" placeholder="N ° apartment or Box letter - Floor - Corridor - Staircase">
             <br>
-            <label for="inputLocation">Additional location</label>
-            <input type="text" class="form-control" id="inputLocation" placeholder="Entry - Buliding - Residence...">
+            <label for="buildInfo">Build Info</label>
+            <input type="text" class="form-control" id="buildInfo" placeholder="Entry - Buliding - Residence...">
             <br>    
             <label for="inputRoad">Road</label>
-            <input type="text" class="form-control" id="inputRoad" placeholder="12 Rue Saint Louis Blanc">
+            <input type="text" class="form-control" id="road" placeholder="12 Rue Saint Louis Blanc">
             <br>
-            <label for="inputWay">Complement location way</label>
-            <input type="text" class="form-control" id="inputWay" placeholder="Remaining post - BP 1114 - Location ">
+            <label for="delivery">Delivery</label>
+            <input type="text" class="form-control" id="delivery" placeholder="Remaining post - BP 1114 - Location ">
         </div>
 
         
@@ -67,13 +84,13 @@
         </div>
 
         <div class="form-group col-md-4">
-                <label for="inputCity">City</label>
+                <label for="city">City</label>
                 <select id="city" class="form-control">
                   <option></option>
                 </select>
         </div>
              <div class="form-group" >
-             <button methode="post" type="submit" class="button">Submit</button>
+             <button  type="button"  onclick="saveAddresses()">Submit</button>
 
         </div>
 </form>
@@ -90,8 +107,8 @@
         xhr.onreadystatechange = function () {
           if(xhr.readyState === 4 && xhr.status === 200) {
             let response = JSON.parse(xhr.response);
-            
-            for(i=0; i < response.lenght; i++) {
+
+            for(i=0; i < response.length; i++) {
               let select = document.getElementById('city');
               let option = document.createElement('option');
               option.innerHTML = response[i].name;
@@ -100,8 +117,25 @@
             }
           }   
         };
-        xhr.send(zipCode);
+        xhr.send();
        }
+    }
+
+    function saveAddresses() {
+        let identity = document.getElementById('identity').value;
+        let appartementInfo = document.getElementById('appartementInfo').value;
+        let buildInfo = document.getElementById('buildInfo').value;
+        let road = document.getElementById('road').value;
+        let delivery = document.getElementById('delivery').value;
+        let id = document.getElementById('city').value;
+
+        let url = 'http://localhost:8082/addressbook/addresses/';
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+        let json = JSON.stringify({'identity': identity, 'appartementInfo': appartementInfo, 'buildInfo': buildInfo, 'road': road, 'delivery': delivery, 'city':{'id':id}})
+        xhr.send(json); 
     }
   
   </script>
