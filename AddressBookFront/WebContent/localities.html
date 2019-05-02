@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="UTF-8">
+        <title>Localities</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .localitiesTitle { 
+            font-size: 25px;
+            color:black;
+            text-align: center;
+            text-transform: uppercase;
+           }
+           .navbar {
+            display: block;
+            padding: 25px;
+        }
+
+        .table{
+            display: center;
+            
+
+        }
+    </style>
+    
+  </head>
+    
+<body>
+        <div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                      <a class="navbar-brand" href="#">AddressBook</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item ">
+                          <a  class="nav-link" href="HomePage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a  class="nav-link " href="AddressCreationPage.html">Address</a>
+                        </li>
+                        <li class="nav-item">
+                          <a  class="nav-link" href="Localities.html">Localities</a>
+                        </li>
+                        <li class="nav-item">
+                          <a  class="nav-link active" href="AdminPage.html">Admin</a>
+                        </li>
+                      </ul>
+                    </div>
+              </nav>
+        </div>
+              <div>
+                    <h1 class="localitiesTitle">Localities</h1>
+             </div>
+        <div class="table">
+             <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" id="name">City</th>
+                        <th scope="col" id="zip">Zip Code</th>
+                        <th scope="col" id="coordinate">Map</th>
+                      </tr>
+                    </thead>
+                    <tbody id="data">
+
+                    </tbody>
+                  </table>
+        </div>
+    </div>
+    <div class="form-group" >
+    <button  type="button"  onclick="locality()">Submit</button>
+
+</div>
+
+
+    <script>
+
+function locality() {
+    //let zipCode = document.getElementById('zipCode').value;
+    
+
+
+        let url = 'http://localhost:8082/addressbook/cities/all?page=0';
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+        xhr.onreadystatechange = function () {
+          if(xhr.readyState === 4 && xhr.status === 200) {
+           let response = JSON.parse(xhr.response);
+           console.log(response);
+            for(i=0; i < response.length; i++) {
+              let tbody = document.getElementById('data');
+              let row = document.createElement('tr');
+              let td = document.createElement('td');
+              td.innerHTML = response[i].name;
+              td.value = response[i].id;
+              row.appendChild(td);
+              tbody.appendChild(row);
+
+           }
+
+         }
+        };
+        xhr.send(); 
+    }
+
+
+
+       
+
+
+
+    </script>
+</body>
+
+
+</html>
+
